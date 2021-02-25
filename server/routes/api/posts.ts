@@ -1,51 +1,33 @@
-import { request } from "http";
+import { request } from 'http'
 
-export {};
-const express = require("express");
-const mongodb = require("mongodb");
+export {}
+const express = require('express')
+const mongodb = require('mongodb')
+const connectToCovid19DB = require('../../database/connection');
 
-const {
-  MONGO_URL,
-  MONGO_DB_USER,
-  MONGO_DB_PASSWORD,
-} = require("../../../config.json");
-
-const router = express.Router();
+const router = express.Router()
 
 //Get post
-router.get("/", async (req, res) => {
-  const posts = await loadPostCollection();
-  res.send(await posts.find({}).toArray());
-});
+router.get('/', async (req, res) => {
+    const posts = await connectToCovid19DB()
+    res.send(await posts.find({}).toArray())
+})
 
 //Add post
-router.post("/", async (req, res) => {
-  const posts = await loadPostCollection();
-  await posts.insertOne({
-    text: req.body.text,
-    createdAt: new Date(),
-  });
-  res.status(201).send();
-});
+router.post('/', async (req, res) => {
+    const posts = await connectToCovid19DB()
+    await posts.insertOne({
+        text: req.body.text,
+        createdAt: new Date(),
+    })
+    res.status(201).send()
+})
 
 //Delete post
-router.delete('/:id', async (req,res)=>{
-  const posts = await loadPostCollection();
-  await posts.deleteOne({_id: new mongodb.ObjectID(req.params.id)});
-  res.status(200).send();
-});
+router.delete('/:id', async (req, res) => {
+    const posts = await connectToCovid19DB()
+    await posts.deleteOne({ _id: new mongodb.ObjectID(req.params.id) })
+    res.status(200).send()
+})
 
-
-async function loadPostCollection() {
-  const client = await mongodb.MongoClient.connect(MONGO_URL, {
-    auth: {
-      user: MONGO_DB_USER,
-      password: MONGO_DB_PASSWORD,
-    },
-    useUnifiedTopology: true,
-  });
-
-  return client.db("covid-19").collection("data");
-}
-
-module.exports = router;
+module.exports = router

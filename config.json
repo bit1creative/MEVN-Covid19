@@ -1,5 +1,6 @@
 {
-  "MONGO_URL": "mongodb+srv://<user>:<password>@cluster0.wythh.mongodb.net/covid-19?retryWrites=true&w=majority",
-  "MONGO_DB_USER": "bit1creative",
-  "MONGO_DB_PASSWORD": "qwertyuiop112233"
+    "MONGO_URL": "mongodb+srv://<user>:<password>@cluster0.wythh.mongodb.net/covid-19?retryWrites=true&w=majority",
+    "MONGO_DB_USER": "bit1creative",
+    "MONGO_DB_PASSWORD": "qwertyuiop112233",
+    "COVID_19_API": "https://api.covid19api.com"
 }
