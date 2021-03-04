@@ -1,0 +1,17 @@
+cors,
+tailwind,
+mongodb,
+axios,
+body-parser,
+express,
+chart-map,
+scheduler
+vuejs
+vue-router
+
+// fontawesome
+npm i --save @fortawesome/fontawesome-svg-core
+npm i --save @fortawesome/free-solid-svg-icons
+npm i --save @fortawesome/free-brands-svg-icons
+npm i --save @fortawesome/free-regular-svg-icons
+npm install --save @fortawesome/vue-fontawesome

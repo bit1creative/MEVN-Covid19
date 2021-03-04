@@ -21,17 +21,27 @@ async function updateData(url) {
                 Object.keys(await covid19collection.find().toArray()).length !==
                     0
             ) {
-                covid19collection.update(
+                covid19collection.updateOne(
                     { dataType: 'globalData' },
-                    { globalData: data.Global }
+                    {
+                        $set: {
+                            dataType: 'globalData',
+                            globalData: data.Global,
+                        },
+                    }
                 );
-                covid19collection.update(
+                covid19collection.updateOne(
                     { dataType: 'countriesData' },
-                    { countriesData: data.Countries }
+                    {
+                        $set: {
+                            dataType: 'countriesData',
+                            countriesData: data.Countries,
+                        },
+                    }
                 );
-                covid19collection.update(
+                covid19collection.updateOne(
                     { dataType: 'date' },
-                    { date: data.Date }
+                    { $set: { dataType: 'date', date: data.Date } }
                 );
                 console.log('data updated');
                 return;
@@ -53,7 +63,7 @@ async function updateData(url) {
     }
 }
 
-// everyday at 12:00 AM
+// everyday at 12:00 AM 
 module.exports = schedule.scheduleJob('0 12 * * *', () => {
     updateData(COVID_19_API);
 });
