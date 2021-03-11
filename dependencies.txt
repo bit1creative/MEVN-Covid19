@@ -1,13 +1,15 @@
 cors,
-tailwind,
-mongodb,
-axios,
-body-parser,
-express,
-chart-map,
 scheduler
+express,
+mongodb,
+body-parser,
+
+tailwind,
+axios,
+chart-map,
 vuejs
 vue-router
+vue-scrollto
 
 // fontawesome
 npm i --save @fortawesome/fontawesome-svg-core

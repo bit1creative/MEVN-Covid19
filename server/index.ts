@@ -11,9 +11,11 @@ app.use(cors());
 // scheduler to update covid-19 data every day
 const updateDataScheduler = require('./scheduler/updateData');
 
-const covid19data = require('./routes/api/covid19data');
+const covid19ApiRouter = require('./routes/api/covid19data');
+app.use('/api/covid-19', covid19ApiRouter);
 
-app.use('/api/covid-19', covid19data);
+const ipRouter = require('./routes/api/ip');
+app.use('/api', ipRouter);
 
 const port = process.env.PORT || 3000;
 

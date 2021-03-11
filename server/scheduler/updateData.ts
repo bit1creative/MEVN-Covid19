@@ -8,7 +8,7 @@ async function updateData(url) {
     try {
         const data = await axios({
             method: 'get',
-            url: `${COVID_19_API}/summary`,
+            url: `${url}/summary`,
             responseType: 'JSON',
         }).then(function (response) {
             // console.log(response?.data?.Global);
