@@ -5,11 +5,13 @@ mongodb,
 body-parser,
 
 tailwind,
+tailwindcss-textshadow,
 axios,
-chart-map,
+vue-chart-map, // changes were applied (like changed methods // css -> tailwind)
 vuejs
 vue-router
 vue-scrollto
+vue-chartjs
 
 // fontawesome
 npm i --save @fortawesome/fontawesome-svg-core

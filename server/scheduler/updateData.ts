@@ -63,7 +63,7 @@ async function updateData(url) {
     }
 }
 
-// everyday at 12:00 AM 
+// everyday at 12:00 AM
 module.exports = schedule.scheduleJob('0 12 * * *', () => {
     updateData(COVID_19_API);
 });
