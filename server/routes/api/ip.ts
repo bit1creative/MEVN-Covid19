@@ -2,17 +2,20 @@ export {};
 const express = require('express');
 const ipRouter = express.Router();
 const axios = require('axios');
+const requestIp = require('request-ip');
 
 ipRouter.get('/ip', async (req, res) => {
-    const ip = (await req.ip) || req.connection.remoteAddress;
-
+    const clientIp = requestIp.getClientIp(req);
     axios
         .get(
-            'https://ipgeolocation.abstractapi.com/v1/?api_key=04a87224d27c4aabb75ab7f2a9a12089&ip_address=2.21.100.0'
+            `https://ipgeolocation.abstractapi.com/v1/?api_key=04a87224d27c4aabb75ab7f2a9a12089&ip_address=${clientIp}`
         )
         .then((response) => {
-            // console.log(JSON.parse(res));
-            res.send(response.data);
+            if (response.data.length == 0) {
+                res.sendStatus(404);
+            } else {
+                res.send(response.data);
+            }
         })
         .catch(() => {
             res.sendStatus(404);

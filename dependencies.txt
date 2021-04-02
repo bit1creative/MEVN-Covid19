@@ -12,6 +12,7 @@ vuejs
 vue-router
 vue-scrollto
 vue-chartjs
+autocomplete-vue
 
 // fontawesome
 npm i --save @fortawesome/fontawesome-svg-core
