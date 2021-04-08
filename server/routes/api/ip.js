@@ -1,4 +1,3 @@
-export {};
 const express = require('express');
 const ipRouter = express.Router();
 const axios = require('axios');

@@ -1,4 +1,3 @@
-export {};
 const express = require('express');
 const connectToCovid19DB = require('../../database/connection');
 

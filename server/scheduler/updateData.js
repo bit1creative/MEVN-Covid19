@@ -1,4 +1,3 @@
-export {};
 const connectToCovid19DB = require('../database/connection');
 const axios = require('axios');
 const schedule = require('node-schedule');
