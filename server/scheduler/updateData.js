@@ -1,7 +1,6 @@
 const connectToCovid19DB = require('../database/connection');
 const axios = require('axios');
 const schedule = require('node-schedule');
-const { COVID_19_API } = require('../../config.json');
 
 async function updateData(url) {
     try {
@@ -64,5 +63,5 @@ async function updateData(url) {
 
 // everyday at 12:00 AM
 module.exports = schedule.scheduleJob('0 12 * * *', () => {
-    updateData(COVID_19_API);
+    updateData(process.env.COVID_19_API);
 });
